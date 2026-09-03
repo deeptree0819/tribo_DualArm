@@ -14,7 +14,7 @@ MoveIt2와 PILZ Industrial Motion Planner를 사용해 [LeRobot **SO-ARM101**](h
 
 ## 주요 기능
 
-- **MoveIt 직접 구동 (ver3, 권장)** — RViz에서 Plan & Execute하면 실제 SO-ARM101이 바로 움직임. 시작 시 안전 자세 자동 정렬(`home_on_start`). (`soarm101_moveit_driver`)
+- **MoveIt 직접 구동** — RViz에서 Plan & Execute하면 실제 SO-ARM101이 바로 움직임. 시작 시 안전 자세 자동 정렬(`home_on_start`). (`soarm101_moveit_driver`)
 - **MoveIt2 모션 플래닝** — PILZ Industrial Motion Planner (PTP / LIN) 기반 경로 계획
 - **Trajectory 저장/재생** — 계획된 Joint Trajectory를 메타데이터와 함께 YAML로 직렬화
 - **실제 로봇 제어** — LeRobot / Feetech 모터 버스를 통해 물리 SO-ARM101 구동
