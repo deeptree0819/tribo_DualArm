@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: dt_arm_moveit_config
+    relative_path: config/soarm101_40mmUP.urdf.xacro
+  srdf:
+    relative_path: config/soarm101_40mmUP.srdf
+  package_settings:
+    author_name: deeptree
+    author_email: deeptree00@gmail.com
+    generated_timestamp: 1770093660
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

@@ -1,0 +1,23 @@
+# PILZ Industrial Motion Planner Pipeline Configuration
+#
+# NOTE: moveit_configs_utils (Jazzy) namespaces this whole file under the
+# pipeline name (pilz_industrial_motion_planner). Keep the parameters FLAT at
+# the top level here — do NOT wrap them in `planning_pipelines:` /
+# `pilz_industrial_motion_planner:` blocks, or they get double-nested and
+# move_group fails with "Planning plugin name is empty or not defined".
+planning_plugins:
+  - pilz_industrial_motion_planner/CommandPlanner
+request_adapters:
+  - default_planning_request_adapters/ResolveConstraintFrames
+  - default_planning_request_adapters/ValidateWorkspaceBounds
+  - default_planning_request_adapters/CheckStartStateBounds
+  - default_planning_request_adapters/CheckStartStateCollision
+response_adapters:
+  - default_planning_response_adapters/ValidateSolution
+  - default_planning_response_adapters/DisplayMotionPath
+capabilities: >-
+    pilz_industrial_motion_planner/MoveGroupSequenceAction
+    pilz_industrial_motion_planner/MoveGroupSequenceService
+# Pilz does its own time parameterization, do NOT add AddTimeOptimalParameterization
+# Also do NOT add any CHOMP-related adapters
+default_planner_config: PTP

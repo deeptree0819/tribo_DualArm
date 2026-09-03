@@ -1,0 +1,15 @@
+# Kinematics configuration for SO-ARM101
+# Interactive Marker 실시간 IK를 위한 설정
+
+arm:
+  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+  kinematics_solver_search_resolution: 0.005
+  kinematics_solver_timeout: 1.0       # 1초로 증가 (5DOF 팔은 IK 풀기 어려움)
+  kinematics_solver_attempts: 10       # 재시도 횟수 증가
+  position_only_ik: true               # 5DOF 팔: orientation 무시하여 IK 성공률 향상
+  
+gripper:
+  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+  kinematics_solver_search_resolution: 0.005
+  kinematics_solver_timeout: 0.1
+  kinematics_solver_attempts: 3

@@ -1,0 +1,39 @@
+# moveit_motor_bridge 파라미터
+# launch 인자(port/robot_id/dry_run)로 덮어쓸 수 있다.
+moveit_motor_bridge:
+  ros__parameters:
+    port: /dev/ttyACM0
+    robot_id: my_follower_arm
+    dry_run: false
+
+    control_freq: 50.0      # trajectory 스트리밍 주파수 (Hz)
+    state_pub_rate: 30.0    # /joint_states publish 주파수 (Hz)
+    max_step_deg: 6.0       # (예약) 한 스텝 최대 변화량
+
+    # 시작 시 안전 자세로 자동 이동 (시작 자세가 관절 한계를 벗어나
+    # MoveIt 플래닝이 막히는 것을 방지). 끄려면 home_on_start: false
+    home_on_start: true
+    home_duration: 4.0      # home 이동 시간 (초)
+    home:                   # 범위-내 안전 자세 (rad)
+      shoulder_pan: 0.0
+      shoulder_lift: 1.5
+      elbow_flex: 1.5
+      wrist_flex: 0.0
+      wrist_roll: 0.0
+
+    # MoveIt(URDF) 방향/0점과 실제 모터가 다를 때 보정.
+    # motor_deg = sign * deg(rad) + offset_deg
+    signs:
+      shoulder_pan: -1.0
+      shoulder_lift: -1.0
+      elbow_flex: 1.0
+      wrist_flex: -1.0
+      wrist_roll: 1.0
+      gripper: 1.0
+    offsets_deg:
+      shoulder_pan: 0.0
+      shoulder_lift: 0.0
+      elbow_flex: 0.0
+      wrist_flex: 0.0
+      wrist_roll: 0.0
+      gripper: 0.0

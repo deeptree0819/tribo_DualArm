@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>soarm101_trajectory_planner</name>
+  <version>0.1.0</version>
+  <description>
+    PILZ path planning package for LeRobot SO-ARM101.
+    Generates joint trajectories from target XYZ coordinates and saves them to YAML files.
+  </description>
+  <maintainer email="deeptree00@gmail.com">deeptree</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <!-- ROS2 Core -->
+  <depend>rclpy</depend>
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>trajectory_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>control_msgs</depend>
+
+  <!-- MoveIt2 -->
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_core</depend>
+  <depend>moveit_msgs</depend>
+  <depend>moveit_configs_utils</depend>
+  <exec_depend>pilz_industrial_motion_planner</exec_depend>
+
+  <!-- Your MoveIt Config -->
+  <exec_depend>arm_moveit_config</exec_depend>
+
+  <!-- Python dependencies -->
+  <exec_depend>python3-yaml</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

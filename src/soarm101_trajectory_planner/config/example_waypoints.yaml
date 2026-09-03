@@ -1,0 +1,42 @@
+# SO-ARM101 Waypoints 설정 파일
+# batch_planner.py에서 사용
+
+# Planning 설정
+planning:
+  group: arm                    # MoveIt planning group 이름
+  planner: RRTConnect           # OMPL planner 타입: RRTConnect, RRTstar, PRM, EST, KPIECE 등
+  velocity_scaling: 0.1         # 속도 스케일 (0.0 ~ 1.0)
+  acceleration_scaling: 0.1     # 가속도 스케일 (0.0 ~ 1.0)
+  position_only: true           # 5DOF 팔: orientation 제약 없이 위치만 목표로 설정
+
+# Waypoints 정의
+# 각 waypoint는 다음 중 하나의 형태로 지정:
+# 1. Named target: SRDF에 정의된 포즈 이름
+# 2. Position/Orientation: 직접 좌표 지정
+
+waypoints:
+  # Named target 사용 예시 - SRDF에 정의된 'home' 포즈
+  - name: start_home
+    target: home
+
+  # Position만 지정 (position_only: true이므로 orientation 무시)
+  - name: approach_point
+    position:
+      x: 0.25
+      y: -0.29
+      z: 0.264
+
+  # Position + Orientation 지정 (position_only: false일 때만 orientation 적용)
+  - name: pick_ready
+    position:
+      x: 0.34
+      y: -0.171
+      z: 0.138
+    orientation:
+      roll: 0.0
+      pitch: 1.57    # 90도 = 아래 방향
+      yaw: 0.0
+
+  # 다시 Home으로 복귀
+  - name: return_home
+    target: zero

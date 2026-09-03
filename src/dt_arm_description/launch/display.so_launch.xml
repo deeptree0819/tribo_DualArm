@@ -1,0 +1,12 @@
+<launch>
+  <let name="urdf_file"
+       value="$(find-pkg-share dt_arm_description)/urdf/soarm101_40mmUP.urdf"/>
+
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" output="screen">
+    <param name="robot_description" type="str" value="$(command 'cat $(var urdf_file)')"/>
+  </node>
+
+  <node pkg="joint_state_publisher_gui" exec="joint_state_publisher_gui" output="screen"/>
+
+  <node pkg="rviz2" exec="rviz2" output="screen"/>
+</launch>
