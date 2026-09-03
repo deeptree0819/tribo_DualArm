@@ -1,12 +1,12 @@
-# SO-ARM101 MoveIt2 Real Control
+# Tribo DualArm 제어법
 
 [![ROS2](https://img.shields.io/badge/ROS2-Jazzy-blue)](https://docs.ros.org/en/jazzy/)
 [![MoveIt2](https://img.shields.io/badge/MoveIt-2-orange)](https://moveit.picknik.ai/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-green)](#license)
 
-MoveIt2와 PILZ Industrial Motion Planner를 사용해 [LeRobot **SO-ARM101**](https://github.com/huggingface/lerobot) 5-DOF 매니퓰레이터의 경로를 계획하고, 이를 **실제 로봇(Feetech 모터)** 에서 재생·제어하는 ROS 2 워크스페이스입니다.
+MoveIt2와 PILZ Industrial Motion Planner를 사용해 [LeRobot **SO-ARM101**](https://github.com/huggingface/lerobot) 기반 5-DOF 매니퓰레이터의 경로를 계획하고, 이를 **실제 Tribo DualArm 로봇(Feetech 모터)** 에서 재생·제어하는 ROS 2 워크스페이스입니다.
 
-> 워크플로우: **MoveIt2에서 Plan & Execute → 실제 SO-ARM101이 바로 구동** (YAML 기록/재생 단계 불필요)
+> 워크플로우: **MoveIt2에서 Plan & Execute → 실제 Tribo DualArm이 바로 구동** (YAML 기록/재생 단계 불필요)
 
 > **현재 브랜치: `jazzy`** (Ubuntu 24.04 + ROS 2 Jazzy).
 
@@ -14,14 +14,14 @@ MoveIt2와 PILZ Industrial Motion Planner를 사용해 [LeRobot **SO-ARM101**](h
 
 ## 주요 기능
 
-- **MoveIt 직접 구동** — RViz에서 Plan & Execute하면 실제 SO-ARM101이 바로 움직임. 시작 시 안전 자세 자동 정렬(`home_on_start`). (`soarm101_moveit_driver`)
+- **MoveIt 직접 구동 (권장)** — RViz에서 Plan & Execute하면 실제 Tribo DualArm이 바로 움직임. 시작 시 안전 자세 자동 정렬(`home_on_start`). (`soarm101_moveit_driver`)
 - **MoveIt2 모션 플래닝** — PILZ Industrial Motion Planner (PTP / LIN) 기반 경로 계획
 - **Trajectory 저장/재생** — 계획된 Joint Trajectory를 메타데이터와 함께 YAML로 직렬화
-- **실제 로봇 제어** — LeRobot / Feetech 모터 버스를 통해 물리 SO-ARM101 구동
+- **실제 로봇 제어** — LeRobot / Feetech 모터 버스를 통해 물리 Tribo DualArm 구동
   - YAML 트래젝토리 재생 (가감속 S-curve 프로파일, 관절 부호/오프셋 보정)
   - IK 기반 실시간 제어 (`ikpy`)
   - 키보드 텔레오퍼레이션
-- **RViz 시각화** — MoveIt 데모 및 인터랙티브 마커 기반 그리퍼 포즈 제어 (ver2 패치 필요)
+- **RViz 시각화** — MoveIt 데모 및 인터랙티브 마커 기반 그리퍼 포즈 제어 (패치 필요)
 - **그리퍼 포즈 모니터링** — 그리퍼(`gripper_link`)의 실시간 XYZ/RPY 좌표를 콘솔(`gripper_pose_monitor.py`) 또는 GUI(`gripper_pose_gui.py`)로 출력
 
 ---
@@ -30,11 +30,11 @@ MoveIt2와 PILZ Industrial Motion Planner를 사용해 [LeRobot **SO-ARM101**](h
 
 | 패키지 | 설명 |
 |--------|------|
-| `dt_arm_description` | SO-ARM101(40mm UP 버전) URDF / 메시 / 로봇 디스크립션 |
-| `arm_moveit_config` | SO-ARM101용 MoveIt2 설정 (SRDF, kinematics, PILZ, 컨트롤러) |
+| `dt_arm_description` | Tribo DualArm(40mm UP 버전) URDF / 메시 / 로봇 디스크립션 |
+| `arm_moveit_config` | Tribo DualArm용 MoveIt2 설정 (SRDF, kinematics, PILZ, 컨트롤러) |
 | `dt_arm_moveit_config` | 대체 디스크립션(`dt_arm_description`) 기반 MoveIt2 설정 |
 | `soarm101_trajectory_planner` | 경로 계획 + YAML 저장/재생 + 실제 로봇 제어 노드/스크립트 |
-| `soarm101_moveit_driver` | **MoveIt 직접 구동 브리지** — RViz의 Plan & Execute가 실제 SO-ARM101을 바로 구동 (YAML 기록/재생 불필요). [README](src/soarm101_moveit_driver/README.md) |
+| `soarm101_moveit_driver` | **MoveIt 직접 구동 브리지** — RViz의 Plan & Execute가 실제 Tribo DualArm을 바로 구동 (YAML 기록/재생 불필요). [README](src/soarm101_moveit_driver/README.md) |
 | `patches/` | 업스트림 MoveIt2에 적용할 패치 (인터랙티브 마커 IK 수정) |
 
 ---
@@ -103,7 +103,7 @@ cd ~/ros2_ws && colcon build --packages-select moveit_ros_planning
 
 > ### ⚡ 간단 실행 (권장) — MoveIt에서 바로 실제 로봇 구동
 >
-> YAML 기록/재생 없이, RViz에서 **Plan & Execute**만 누르면 실제 SO-ARM101이 움직입니다. (`soarm101_moveit_driver` 패키지)
+> YAML 기록/재생 없이, RViz에서 **Plan & Execute**만 누르면 실제 Tribo DualArm이 움직입니다. (`soarm101_moveit_driver` 패키지)
 >
 > ```bash
 > # 실제 로봇
@@ -158,7 +158,7 @@ ros2 run soarm101_trajectory_planner batch_planner.py -c waypoints.yaml
 
 자세한 옵션과 YAML 포맷은 [`src/soarm101_trajectory_planner/README.md`](src/soarm101_trajectory_planner/README.md) 참고.
 
-### 3. 실제 SO-ARM101에서 재생
+### 3. 실제 Tribo DualArm에서 재생
 
 `play_so101/`에는 바로 실행해볼 수 있는 샘플 `trajectory.yaml`(소각도 안전 동작 → 0 복귀)이 포함되어 있습니다. 로봇은 먼저 모든 관절을 0°로 이동한 뒤 YAML 경로를 재생합니다.
 
