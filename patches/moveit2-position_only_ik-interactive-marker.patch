@@ -1,0 +1,17 @@
+diff --git a/moveit_ros/planning/kinematics_plugin_loader/src/kinematics_plugin_loader.cpp b/moveit_ros/planning/kinematics_plugin_loader/src/kinematics_plugin_loader.cpp
+index 48ca924e1..ff3706723 100644
+--- a/moveit_ros/planning/kinematics_plugin_loader/src/kinematics_plugin_loader.cpp
++++ b/moveit_ros/planning/kinematics_plugin_loader/src/kinematics_plugin_loader.cpp
+@@ -403,6 +403,12 @@ moveit::core::SolverAllocatorFn KinematicsPluginLoader::getLoaderFunction(const
+             }
+           }
+ 
++          // Declare optional solver-specific parameters (e.g. KDL's position_only_ik) on the node so they are
++          // registered. Nodes that do not auto-declare parameters from overrides (notably RViz) otherwise cannot
++          // read them via KinematicsBase::lookupParam(), which silently makes the interactive-marker IK ignore
++          // position_only_ik and attempt full 6-DOF IK (fails on under-actuated arms). See kdl_kinematics_plugin.cpp.
++          declare_parameter<rclcpp::ParameterType::PARAMETER_BOOL>(node_, base_param_name + ".position_only_ik");
++
+           // make sure there is a default resolution at least specified for every solver (in case it was not specified
+           // on the param server)
+           while (search_res[known_group.name_].size() < possible_kinematics_solvers[known_group.name_].size())

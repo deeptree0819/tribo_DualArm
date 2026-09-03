@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="soarm101_40mmUP">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00013957 -0.018363 0.030861"
+        rpy="0 0 0" />
+      <mass
+        value="0.189" />
+      <inertia
+        ixx="0.00013624"
+        ixy="5.1198E-07"
+        ixz="-6.3004E-09"
+        iyy="0.00014751"
+        iyz="-2.1157E-05"
+        izz="0.00017587" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="0.00010759 0.031165 0.02881"
+        rpy="0 0 0" />
+      <mass
+        value="0.11565" />
+      <inertia
+        ixx="5.9357E-05"
+        ixy="8.6054E-08"
+        ixz="-3.6155E-07"
+        iyy="5.7575E-05"
+        iyz="-4.5285E-06"
+        izz="3.2083E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_pan"
+    type="revolute">
+    <origin
+      xyz="-0.00025 -0.0449 0.046575"
+      rpy="0 0 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.9199"
+      upper="1.9199"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link
+    name="upper_arm_link">
+    <inertial>
+      <origin
+        xyz="-0.096849 0.0026864 -0.0016724"
+        rpy="0 0 0" />
+      <mass
+        value="0.16075" />
+      <inertia
+        ixx="6.7583E-05"
+        ixy="-1.2542E-06"
+        ixz="7.5879E-07"
+        iyy="0.00015048"
+        iyz="-8.3184E-08"
+        izz="0.00010571" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/upper_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/upper_arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_lift"
+    type="revolute">
+    <origin
+      xyz="0 0.030635 0.07274"
+      rpy="-1.5708 1.5045 -1.5708" />
+    <parent
+      link="shoulder_link" />
+    <child
+      link="upper_arm_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.7453"
+      upper="1.9199"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link
+    name="lower_arm_link">
+    <inertial>
+      <origin
+        xyz="-0.085694 -0.00028169 0.0030718"
+        rpy="0 0 0" />
+      <mass
+        value="0.11805" />
+      <inertia
+        ixx="4.9968E-05"
+        ixy="8.0458E-07"
+        ixz="-1.0032E-06"
+        iyy="0.00010573"
+        iyz="6.012E-08"
+        izz="7.0167E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/lower_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/lower_arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_flex"
+    type="revolute">
+    <origin
+      xyz="-0.1526 0.027915 0"
+      rpy="-3.1416 0 -1.5045" />
+    <parent
+      link="upper_arm_link" />
+    <child
+      link="lower_arm_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.69"
+      upper="1.85"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="0.03498 -0.00020857 0.0086046"
+        rpy="0 0 0" />
+      <mass
+        value="0.065834" />
+      <inertia
+        ixx="2.3965E-05"
+        ixy="1.1734E-07"
+        ixz="-1.9079E-06"
+        iyy="3.3384E-05"
+        iyz="2.2254E-08"
+        izz="1.864E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_flex"
+    type="revolute">
+    <origin
+      xyz="-0.17481 -0.0053153 0.0015555"
+      rpy="0 3.14159 0" />
+    <parent
+      link="lower_arm_link" />
+    <child
+      link="wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.6581"
+      upper="1.6581"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link
+    name="gripper_link">
+    <inertial>
+      <origin
+        xyz="-0.0063006 -0.00054179 0.027703"
+        rpy="0 0 0" />
+      <mass
+        value="0.090145" />
+      <inertia
+        ixx="4.1215E-05"
+        ixy="4.6793E-07"
+        ixz="6.8356E-06"
+        iyy="4.8738E-05"
+        iyz="-1.1223E-07"
+        izz="2.8887E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/gripper_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/gripper_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_roll"
+    type="revolute">
+    <origin
+      xyz="0.05981 -0.00025321 0.001085"
+      rpy="0 1.5708 0" />
+    <parent
+      link="wrist_link" />
+    <child
+      link="gripper_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.7439"
+      upper="2.8412"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link
+    name="moving_jaw_so101">
+    <inertial>
+      <origin
+        xyz="-0.0015748 -0.030022 0.00037563"
+        rpy="0 0 0" />
+      <mass
+        value="0.020692" />
+      <inertia
+        ixx="1.1404E-05"
+        ixy="-5.5139E-07"
+        ixz="-1.0186E-08"
+        iyy="3.2598E-06"
+        iyz="-1.8949E-07"
+        izz="9.1157E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/moving_jaw_so101.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.96471 0.96471 0.95294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dt_arm_description/meshes/moving_jaw_so101.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gripper"
+    type="revolute">
+    <origin
+      xyz="0.020115 0.00012179 0.024315"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="gripper_link" />
+    <child
+      link="moving_jaw_so101" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.17453"
+      upper="1.7453"
+      effort="10"
+      velocity="10" />
+  </joint>
+</robot>

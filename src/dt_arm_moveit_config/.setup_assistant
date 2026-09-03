@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: dt_arm_description
+    relative_path: urdf/soarm101_40mmUP.urdf
+  srdf:
+    relative_path: config/soarm101_40mmUP.srdf
+  package_settings:
+    author_name: deeptree
+    author_email: deeptree00@gmail.com
+    generated_timestamp: 1770028172

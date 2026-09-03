@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>soarm101_moveit_driver</name>
+  <version>0.1.0</version>
+  <description>
+    MoveIt2 직접 구동 브리지: RViz의 Plan &amp; Execute가 FollowJointTrajectory /
+    GripperCommand 액션을 통해 실제 SO-ARM101(Feetech/LeRobot) 모터를 바로 구동하고,
+    실제 엔코더를 /joint_states로 publish 한다. (YAML 기록/재생 불필요)
+  </description>
+  <maintainer email="deeptree00@gmail.com">deeptree</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>trajectory_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+
+  <!-- 런치가 참조하는 MoveIt 설정/노드 -->
+  <exec_depend>arm_moveit_config</exec_depend>
+  <exec_depend>moveit_configs_utils</exec_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

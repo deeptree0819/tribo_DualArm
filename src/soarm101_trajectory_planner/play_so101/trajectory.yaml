@@ -1,0 +1,36 @@
+# 간단 테스트 trajectory (안전한 소각도 동작)
+# positions 단위: radian, 관절 5개. 0 -> 소각도 동작 -> 0 복귀
+trajectory:
+  metadata:
+    name: simple_safe_test
+    description: small-amplitude test motion, returns to zero
+  joint_info:
+    joint_names:
+      - shoulder_pan
+      - shoulder_lift
+      - elbow_flex
+      - wrist_flex
+      - wrist_roll
+    num_joints: 5
+  statistics:
+    num_points: 9
+    total_duration: 16.0
+  points:
+    - time_from_start: 0.0
+      positions: [0.0, 0.0, 0.0, 0.0, 0.0]
+    - time_from_start: 2.0
+      positions: [0.15, 0.0, 0.0, 0.0, 0.0]
+    - time_from_start: 4.0
+      positions: [0.0, 0.0, 0.0, 0.0, 0.0]
+    - time_from_start: 6.0
+      positions: [0.0, -0.12, 0.0, 0.0, 0.0]
+    - time_from_start: 8.0
+      positions: [0.0, 0.0, 0.15, 0.0, 0.0]
+    - time_from_start: 10.0
+      positions: [0.0, 0.0, 0.0, 0.0, 0.0]
+    - time_from_start: 12.0
+      positions: [0.0, 0.0, 0.0, 0.15, 0.0]
+    - time_from_start: 14.0
+      positions: [0.0, 0.0, 0.0, 0.0, 0.2]
+    - time_from_start: 16.0
+      positions: [0.0, 0.0, 0.0, 0.0, 0.0]
